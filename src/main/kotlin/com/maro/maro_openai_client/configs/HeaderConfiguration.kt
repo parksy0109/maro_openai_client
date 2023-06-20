@@ -10,8 +10,7 @@ import org.springframework.context.annotation.Configuration
 class HeaderConfiguration {
 
     @Value("\${openai.api.key}")
-    lateinit var openaiAPIKey: String
-
+    private lateinit var openaiAPIKey: String
 
     @Bean
     fun requestInterceptor(): RequestInterceptor? {
