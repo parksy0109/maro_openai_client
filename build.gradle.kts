@@ -7,6 +7,12 @@ plugins {
 	kotlin("plugin.spring") version "1.6.21"
 }
 
+val jar: Jar by tasks
+val bootJar: org.springframework.boot.gradle.tasks.bundling.BootJar by tasks
+
+bootJar.enabled = false
+jar.enabled = true
+
 group = "com.maro"
 version = "0.0.1-SNAPSHOT"
 
@@ -26,7 +32,6 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
 
-	testImplementation("io.mockk:mockk:1.13.5")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
