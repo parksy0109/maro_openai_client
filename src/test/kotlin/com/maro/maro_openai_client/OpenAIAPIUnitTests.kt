@@ -4,6 +4,8 @@ import com.maro.maro_openai_client.openai.datum.requests.chat.ChatRequest
 import com.maro.maro_openai_client.openai.datum.requests.chat.Message
 import com.maro.maro_openai_client.openai.datum.requests.chat.Role
 import com.maro.maro_openai_client.openai.datum.requests.embeddings.EmbeddingsRequest
+import com.maro.maro_openai_client.openai.datum.requests.images.ImagesRequest
+import com.maro.maro_openai_client.openai.datum.requests.images.ImagesSize
 import com.maro.maro_openai_client.services.OpenAIService
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -62,6 +64,24 @@ class MaroOpenaiClientApplicationTest {
 
         //then
         print(createEmbeddings)
+    }
+
+
+    @Test
+    @DisplayName("Creates an image given a prompt.")
+    fun `이미지_생성`() {
+        //given
+        val imagesRequest = ImagesRequest(
+            prompt = "the rapidly changing age of artificial intelligence",
+            n = 2,
+            size = ImagesSize.S512.imageSize
+        )
+
+        //when
+        val createImage = openAIService.createImage(imagesRequest)
+
+        //then
+        print(createImage)
     }
 
 }

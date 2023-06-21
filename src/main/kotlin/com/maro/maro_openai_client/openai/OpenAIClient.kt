@@ -3,8 +3,10 @@ package com.maro.maro_openai_client.openai
 import com.maro.maro_openai_client.configs.HeaderConfiguration
 import com.maro.maro_openai_client.openai.datum.requests.chat.ChatRequest
 import com.maro.maro_openai_client.openai.datum.requests.embeddings.EmbeddingsRequest
+import com.maro.maro_openai_client.openai.datum.requests.images.ImagesRequest
 import com.maro.maro_openai_client.openai.datum.responses.ChatResponse
 import com.maro.maro_openai_client.openai.datum.responses.EmbeddingsResponse
+import com.maro.maro_openai_client.openai.datum.responses.ImagesResponse
 import com.maro.maro_openai_client.openai.datum.responses.ModelResponse
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,5 +23,8 @@ interface OpenAIClient {
 
     @RequestMapping(method = [RequestMethod.POST], value = ["/v1/embeddings"])
     fun embeddings(embeddingsRequest: EmbeddingsRequest): EmbeddingsResponse
+
+    @RequestMapping(method = [RequestMethod.POST], value = ["/v1/images/generations"])
+    fun images(imagesRequest: ImagesRequest): ImagesResponse
 
 }
